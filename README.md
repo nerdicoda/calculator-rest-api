@@ -1,25 +1,9 @@
-# REST API with Node.js + Express.js + TypeScript
+# Calculator App with Node.js + Express.js + TypeScript
 
 **Please see my [YouTube channel @NerdiCoda](https://www.youtube.com/@NerdiCoda) to explore more contents.**
 
-## Calculator API
+## Contents
 
-This sample demonstrates a very simple calculator API implemented with Node.js, Express.js. and Typescript.
+Please switch to different branches to explore code for the calculator app.
 
-### Pre-requisites
-
-- [Node.js](https://nodejs.org/en/download) v16 or above
-
-### Instructions
-
-1. Install dependencies.
-
-```
-$ npm install
-```
-
-2. Run Express.js server.
-
-```
-$ npm run dev
-```
+- [Simple calculator API](https://github.com/nerdicoda/calculator-rest-api/tree/rest-api): `rest-api` branch
