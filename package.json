@@ -2,9 +2,10 @@
   "name": "calculator",
   "version": "1.0.0",
   "description": "A very simple calculator API",
-  "main": "index.js",
+  "main": "dist/app.js",
   "scripts": {
     "dev": "tsc -w & nodemon dist/app.js",
+    "dev:win": "start /b tsc -w & nodemon dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

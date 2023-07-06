@@ -14,18 +14,22 @@ This sample demonstrates a very simple calculator API implemented with Node.js, 
 
 1. Clone the repository with this branch.
 
-```
-$ git clone -b rest-api <CLONE URL>
+```shell
+git clone -b rest-api <CLONE URL>
 ```
 
 2. Install dependencies.
 
-```
-$ npm install
+```shell
+npm install
 ```
 
 3. Run Express.js server.
 
-```
-$ npm run dev
+```shell
+# for Windows
+npm run dev:win
+
+# for Linux / macOS
+npm run dev
 ```
