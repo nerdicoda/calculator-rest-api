@@ -24,6 +24,42 @@ router.get('/:id', (req: Request, res) => {
   });
 });
 
+router.delete('/:id', (req: Request, res) => {
+  res.status(204).end();
+});
+
+router.put(
+  '/:id',
+  validateCalculatorRequest,
+  (req: Request<{ id: string }, any, CalculatorRequestBody>, res) => {
+    const { operator, operand1, operand2 } = req.body;
+    let result: number | string;
+    switch (operator) {
+      case '+':
+        result = operand1 + operand2;
+        break;
+      case '-':
+        result = operand1 - operand2;
+        break;
+      case '*':
+        result = operand1 * operand2;
+        break;
+      case '/':
+        result = operand1 / operand2;
+        break;
+      default:
+        result = 'Invalid operator';
+        break;
+    }
+    res.send({
+      message: 'Update a calculation',
+      id: req.params.id,
+      timestamp: req.timestamp,
+      result,
+    });
+  }
+);
+
 router.post(
   '/',
   validateCalculatorRequest,
@@ -47,7 +83,7 @@ router.post(
         result = 'Invalid operator';
         break;
     }
-    res.send({
+    res.status(201).send({
       message: 'Create new calculation',
       timestamp: req.timestamp,
       result,
