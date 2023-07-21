@@ -1,9 +1,7 @@
-# Calculator App with Node.js + Express.js + TypeScript
+# API Contract with OpenAPI Specification 3.0
 
 **Please see my [YouTube channel @NerdiCoda](https://www.youtube.com/@NerdiCoda) to explore more contents.**
 
-## Contents
+## OpenAPI Document for Calculator API
 
-Please switch to different branches to explore code for the calculator app.
-
-- [Simple calculator API](https://github.com/nerdicoda/calculator-rest-api/tree/rest-api): `rest-api` branch
+This sample API contract for the Calculator API is an OpenAPI document created with OpenAPI Specification 3.0.
