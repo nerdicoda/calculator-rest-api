@@ -7,3 +7,5 @@
 Please switch to different branches to explore code for the calculator app.
 
 - [Simple calculator API](https://github.com/nerdicoda/calculator-rest-api/tree/rest-api): `rest-api` branch
+
+- [Calculator API contract with OpenAPI](https://github.com/nerdicoda/calculator-rest-api/tree/api-contract): `api-contract` branch
