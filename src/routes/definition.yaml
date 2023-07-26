@@ -1,0 +1,12 @@
+openapi: '3.0.3'
+info:
+  title: 'Calculator API'
+  version: '1.0.0'
+tags:
+  - name: health
+    description: Health check
+  - name: calculator
+    description: Calculator operations
+externalDocs:
+  url: https://www.youtube.com/@NerdiCoda
+  description: My calculator documentation

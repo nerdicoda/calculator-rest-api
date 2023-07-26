@@ -2,9 +2,9 @@
 
 **Please see my [YouTube channel @NerdiCoda](https://www.youtube.com/@NerdiCoda) to explore more contents.**
 
-## Calculator API
+## Calculator API Contract with OpenAPI, Swagger UI and Data Validation
 
-This sample demonstrates a very simple calculator API implemented with Node.js, Express.js. and Typescript.
+This sample demonstrates how to create an API contract for a simple calculator API implemented with Node.js, Express.js. and Typescript. It enforces the API contract through an OpenAPI document created from fragments of OpenAPI definitions and JSDoc. It uses the OpenAPI document to create a Swagger UI and data validation automatically without writing custom data validation functions.
 
 ### Pre-requisites
 
@@ -15,7 +15,7 @@ This sample demonstrates a very simple calculator API implemented with Node.js, 
 1. Clone the repository with this branch.
 
 ```shell
-git clone -b rest-api <CLONE URL>
+git clone -b api-contract <CLONE URL>
 ```
 
 2. Install dependencies.

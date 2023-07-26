@@ -1,0 +1,17 @@
+components:
+  schemas:
+    HealthStatus:
+      description: Health check status
+      type: object
+      required:
+        - status
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum:
+            - OK
+        timestamp:
+          type: integer
+          description: Number of milliseconds since Epoch time
+          example: 1688612539479

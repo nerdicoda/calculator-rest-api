@@ -1,0 +1,330 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Calculator API",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "health",
+      "description": "Health check"
+    },
+    {
+      "name": "calculator",
+      "description": "Calculator operations"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://www.youtube.com/@NerdiCoda",
+    "description": "My calculator documentation"
+  },
+  "paths": {
+    "/calculator": {
+      "get": {
+        "description": "Get all calculations",
+        "operationId": "getAllCalculations",
+        "tags": [
+          "calculator"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CalculatorResult"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a calculation",
+        "operationId": "createCalculation",
+        "tags": [
+          "calculator"
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CalculatorCommand"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculatorResult"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/calculator/{id}": {
+      "get": {
+        "description": "Get calculation by ID",
+        "operationId": "getCalculationById",
+        "tags": [
+          "calculator"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CalculatorId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculatorResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete calculation by ID",
+        "operationId": "deleteCalculationById",
+        "tags": [
+          "calculator"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CalculatorId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a calculation",
+        "operationId": "updateCalculation",
+        "tags": [
+          "calculator"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CalculatorId"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/CalculatorCommand"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CalculatorResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "description": "Health check endpoint for Calculator API",
+        "operationId": "healthCheck",
+        "tags": [
+          "health"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CalculatorCommand": {
+        "description": "Calculation command",
+        "type": "object",
+        "required": [
+          "operator",
+          "operand1",
+          "operand2"
+        ],
+        "properties": {
+          "operator": {
+            "type": "string",
+            "enum": [
+              "+",
+              "-",
+              "*",
+              "/"
+            ]
+          },
+          "operand1": {
+            "type": "number"
+          },
+          "operand2": {
+            "type": "number"
+          }
+        }
+      },
+      "CalculatorResult": {
+        "description": "Calculation result",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CalculatorCommand"
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "timestamp"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-f\\d]+$",
+                "description": "Unique ID of the calculation"
+              },
+              "result": {
+                "type": "number"
+              },
+              "message": {
+                "type": "string"
+              },
+              "timestamp": {
+                "type": "integer",
+                "description": "Number of milliseconds since Epoch time",
+                "example": 1688612539479
+              }
+            }
+          }
+        ]
+      },
+      "ErrorModel": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "HealthStatus": {
+        "description": "Health check status",
+        "type": "object",
+        "required": [
+          "status",
+          "timestamp"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "OK"
+            ]
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Number of milliseconds since Epoch time",
+            "example": 1688612539479
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "CalculatorCommand": {
+        "description": "Calculator command request body",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CalculatorCommand"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "CalculatorId": {
+        "name": "id",
+        "in": "path",
+        "description": "Calculator ID",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[a-f\\d]+$",
+          "example": "1"
+        }
+      }
+    },
+    "responses": {
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorModel"
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "Not found error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorModel"
+            }
+          }
+        }
+      }
+    }
+  }
+}

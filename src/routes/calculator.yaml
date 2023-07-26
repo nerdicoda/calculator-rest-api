@@ -1,0 +1,60 @@
+components:
+  schemas:
+    CalculatorCommand:
+      description: Calculation command
+      type: object
+      required:
+        - operator
+        - operand1
+        - operand2
+      properties:
+        operator:
+          type: string
+          enum:
+            - +
+            - '-'
+            - '*'
+            - /
+        operand1:
+          type: number
+        operand2:
+          type: number
+    CalculatorResult:
+      description: Calculation result
+      allOf:
+        - $ref: '#/components/schemas/CalculatorCommand'
+        - type: object
+          required:
+            - id
+            - timestamp
+          properties:
+            id:
+              type: string
+              pattern: ^[a-f\d]+$
+              description: Unique ID of the calculation
+            result:
+              type: number
+            message:
+              type: string
+            timestamp:
+              type: integer
+              description: Number of milliseconds since Epoch time
+              example: 1688612539479
+  requestBodies:
+    CalculatorCommand:
+      description: Calculator command request body
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CalculatorCommand'
+  parameters:
+    CalculatorId:
+      name: id
+      in: path
+      description: Calculator ID
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-f\d]+$
+        example: '1'
