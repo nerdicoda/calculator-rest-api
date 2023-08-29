@@ -2,9 +2,9 @@
 
 **Please see my [YouTube channel @NerdiCoda](https://www.youtube.com/@NerdiCoda) to explore more contents.**
 
-## Calculator API Contract with OpenAPI, Swagger UI and Data Validation
+## Refactor Calculator API with MVC Pattern and Object-Oriented Programming
 
-This sample demonstrates how to create an API contract for a simple calculator API implemented with Node.js, Express.js. and Typescript. It enforces the API contract through an OpenAPI document created from fragments of OpenAPI definitions and JSDoc. It uses the OpenAPI document to create a Swagger UI and data validation automatically without writing custom data validation functions.
+This sample demonstrates how to refactor the calculator API with MVC (Model View Controller) pattern and object-oriented programming. The refactored code uses Domain Object to represent business logic, Data Access Object (DAO) for data access, Data Mappers to convert between Domain Object and Data Transfer Object (DTO), and controller to coordinate workflows. The refactored code improves separation of concern and is more modular and maintainable.
 
 ### Pre-requisites
 
@@ -15,7 +15,7 @@ This sample demonstrates how to create an API contract for a simple calculator A
 1. Clone the repository with this branch.
 
 ```shell
-git clone -b api-contract <CLONE URL>
+git clone -b refactor-mvc <CLONE URL>
 ```
 
 2. Install dependencies.
