@@ -12,4 +12,4 @@ Please switch to different branches to explore code for the calculator app.
 
 - [Calculator OpenAPI DocumentCalculator API Contract with OpenAPI, Swagger UI and Data Validation](https://github.com/nerdicoda/calculator-rest-api/tree/api-contract): `api-contract` branch
 
--[Refactor Calculator API with MVC Pattern and OOP](https://github.com/nerdicoda/calculator-rest-api/tree/refactor-mvc) - `refactor-mvc` branch
+- [Refactor Calculator API with MVC Pattern and OOP](https://github.com/nerdicoda/calculator-rest-api/tree/refactor-mvc) - `refactor-mvc` branch
