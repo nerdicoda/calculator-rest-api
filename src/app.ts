@@ -1,6 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
-import { healthRouter, calculatorRouter, apiDocsRouter } from './routes';
+import { healthRouter, apiDocsRouter, CalculatorRouter } from './routes';
 import {
   addTimestamp,
   errorHandler,
@@ -9,7 +9,7 @@ import {
 } from './middlewares';
 import { CalculatorDao, MockCalculatorDao } from './daos';
 import { CalculatorController } from './controllers';
-import { CalculatorRouter } from './routes/calculator';
+
 const app = express();
 const port = 3000;
 
