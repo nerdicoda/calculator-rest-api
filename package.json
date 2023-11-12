@@ -4,8 +4,8 @@
   "description": "A very simple calculator API",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "npm run schemas && npm run copyfiles && tsc -w & nodemon dist/app.js",
-    "dev:win": "npm run schemas && npm run copyfiles && start /b tsc -w & nodemon --config nodemon.win.json dist/app.js",
+    "dev": "npm run schemas && npm run copyfiles && tsc -w & MONGODB_URI=mongodb://localhost:27017 nodemon dist/app.js",
+    "dev:win": "npm run schemas && npm run copyfiles && start /b tsc -w & set MONGODB_URI=mongodb://localhost:27017& nodemon --config nodemon.win.json dist/app.js",
     "schemas": "npm run schemas:openapi && npm run schemas:types",
     "schemas:openapi": "swagger-jsdoc -d src/routes/definition.yaml src/routes/*.ts \"src/routes/!(definition).yaml\" -o src/schemas/openapi.json",
     "schemas:types": "openapi-typescript src/schemas/openapi.json -o src/schemas/index.d.ts",
@@ -19,10 +19,13 @@
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
     "express-openapi-validator": "^5.0.4",
+    "lodash.omit": "^4.5.0",
+    "mongodb": "^6.2.0",
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
+    "@types/lodash.omit": "^4.5.9",
     "@types/swagger-ui-express": "^4.1.3",
     "copyfiles": "^2.4.1",
     "nodemon": "^2.0.22",

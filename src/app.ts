@@ -9,6 +9,8 @@ import {
 } from './middlewares';
 import { CalculatorDao, MockCalculatorDao } from './daos';
 import { CalculatorController } from './controllers';
+import { MongoCalculatorDao } from './daos/calculator/mongo';
+import { mongoClient } from './services/mongo';
 
 const app = express();
 const port = 3000;
@@ -18,7 +20,8 @@ app.use(addTimestamp);
 app.use(logger);
 app.use(openApiValidator);
 
-const calculatorDao: CalculatorDao = new MockCalculatorDao();
+// const calculatorDao: CalculatorDao = new MockCalculatorDao();
+const calculatorDao: CalculatorDao = new MongoCalculatorDao(mongoClient);
 const calculatorController = new CalculatorController(calculatorDao);
 const calculatorRouter = new CalculatorRouter(calculatorController);
 
