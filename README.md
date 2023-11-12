@@ -2,20 +2,21 @@
 
 **Please see my [YouTube channel @NerdiCoda](https://www.youtube.com/@NerdiCoda) to explore more contents.**
 
-## Refactor Calculator API with MVC Pattern and Object-Oriented Programming
+## Use MongoDB with Express.js + TypeScript
 
-This sample demonstrates how to refactor the calculator API with MVC (Model View Controller) pattern and object-oriented programming. The refactored code uses Domain Object to represent business logic, Data Access Object (DAO) for data access, Data Mappers to convert between Domain Object and Data Transfer Object (DTO), and controller to coordinate workflows. The refactored code improves separation of concern and is more modular and maintainable.
+This sample demonstrates how to use MongoDB with Express.js + TypeScript. It builds on top of the refactored the calculator API with MVC (Model View Controller) pattern and object-oriented programming. To use MongoDB, we only need to implement the `CalculatorDao` interface using MongoDB. This implementation uses MongoDB driver for Node.js. 
 
 ### Pre-requisites
 
 - [Node.js](https://nodejs.org/en/download) v16 or above
+- [MongoDB](https://www.mongodb.com/docs/manual/installation/) installed and running in localhost on port 27017
 
 ### Instructions
 
 1. Clone the repository with this branch.
 
 ```shell
-git clone -b refactor-mvc <CLONE URL>
+git clone -b use-mongodb <CLONE URL>
 ```
 
 2. Install dependencies.
